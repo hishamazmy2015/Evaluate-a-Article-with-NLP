@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Evaluate an article with using Natural Language Processing</title>
+    </head>
+
+    <body>
+
+        <header>
+            <div class="heading">
+                Analysis project
+            </div>
+            <div class="subHeading">
+                Evaluate a News Article with Natural Language Processing
+            </div>
+        </header>
+
+        <main>
+
+            <section class="errors">
+                <span class="closebtn"
+                    onclick="this.parentElement.style.display='none';">&times;</span>
+                <div id="error"></div>
+            </section>
+
+
+            <section>
+                <form onsubmit="return Client.handleSubmit(event)">
+                    <input id="name" class="inputBox" type="url" name="dataURL"
+                        value=""
+                        placeholder="https://www.news-source/a-news-article...">
+                    <input type="submit" class="submitBtn" name=""
+                        value="submit"
+                        onclick="return Client.handleSubmit(event)"
+                        onsubmit="return Client.handleSubmit(event)">
+                </form>
+                <section>
+
+                    <section class="results">
+                        <ul>
+                            <li>
+                                <h3>Text Polarity:</h3>
+                                <p id="polarity"></p>
+                                <h4>Confidence: </h4>
+                                <p id="pc"></p>
+                            </li>
+                            <li>
+                                <h3>Text Subjectivity:</h3>
+                                <p id="sc"></p>
+                                <h4>Confidence: </h4>
+                                <p id="scon"></p>
+                            </li>
+                            <h3>Text Excerpt:</h3>
+                            <p id="excerpt"></p>
+                        </ul>
+                    </section>
+                </main>
+
+                <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js').then(registration => {
+                    console.log('SW registered: ', registration);
+                });
+            });
+        } else {
+            console.log("Service Working not working");
+        }
+    </script>
+            </body>
+
+        </html>
