@@ -12,8 +12,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("dist"));
+// app.get("/", (req, res) => res.sendFile("dist/index.html"));
 
-app.post("/article", (req, res) => {
+app.post("/analysis", (req, res) => {
   if (!req.body.text) {
     return res.status(400).json({
       message: "Invalid input",
@@ -21,7 +22,7 @@ app.post("/article", (req, res) => {
   }
   const formData = new FormData();
   formdata.append("key", process.env.API_KEY);
-  //  formData.append("key", "fedeb69d0db26909a38280ea0afb468e");
+  // formData.append("key", "fedeb69d0db26909a38280ea0afb468e");
   formData.append("txt", req.body.text);
   formData.append("lang", "en");
   const requestOptions = {

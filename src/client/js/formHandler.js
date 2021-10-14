@@ -2,9 +2,10 @@ const handleSubmit = async (event) => {
   event.preventDefault();
 
   var urlAnalysis = document.getElementById("name").value;
+  var validUrl = JSON.parse(JSON.stringify(urlAnalysis));
 
-  if (validUrl) {
-    fetch("http://localhost:8088/article", {
+  if (Client.validURL(validUrl)) {
+    fetch("http://localhost:8888/analysis", {
       method: "POST",
       credentials: "same-origin",
       mode: "cors",
@@ -26,14 +27,13 @@ const handleSubmit = async (event) => {
           "Something went wrong Please try again";
       });
   } else {
-    document.getElementById("errors").innerHTML = "URL is empty ";
+    document.getElementById("errors").innerHTML =
+      "URL is wrong try again with valid one !!! ";
   }
 };
 
 /**
- *
  * Fetch  Article
- *
  */
 
 module.exports = handleSubmit;
