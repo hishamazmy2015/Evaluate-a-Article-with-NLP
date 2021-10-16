@@ -10,4 +10,4 @@ const validURL = (str)=>{
     }
 }
 
-export { validURL }
+module.exports = validURL;

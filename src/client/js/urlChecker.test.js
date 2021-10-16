@@ -1,4 +1,7 @@
-import "@babel/polyfill";
+// import "@babel/polyfill";
+require("@babel/polyfill");
+
+
 const validURL = require('./urlChecker');
 
 describe("Checking this function exist or not", () => {
