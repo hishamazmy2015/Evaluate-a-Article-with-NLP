@@ -5,7 +5,7 @@ const handleSubmit = async (event) => {
   var validUrl = JSON.parse(JSON.stringify(urlAnalysis));
 
   if (Client.validURL(validUrl)) {
-    fetch("http://localhost:8888/analysis", {
+    const response = await fetch("http://localhost:8888/analysis", {
       method: "POST",
       credentials: "same-origin",
       mode: "cors",
@@ -13,19 +13,22 @@ const handleSubmit = async (event) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ text: urlAnalysis }),
-    })
-      .then((res) => {
-        data = res.json();
-        document.getElementById("polarity").innerHTML = data.polarity;
-        document.getElementById("sc").innerHTML = data.subjectivity;
-        document.getElementById("scon").innerHTML = data.polarity_confidence;
-        document.getElementById("excerpt").innerHTML =
-          data.subjectivity_confidence;
-      })
-      .catch((error) => {
-        document.getElementById("error").innerHTML =
-          "Something went wrong Please try again";
-      });
+    });
+
+    data = await response.json();
+    // .then((res) => {
+    // data = res.json();
+
+    document.getElementById("agreement").innerHTML = data.agreement;
+    document.getElementById("sc").innerHTML = data.subjectivity;
+    document.getElementById("scon").innerHTML = data.confidence;
+    document.getElementById("irony").innerHTML = data.irony;
+    document.getElementById("score_tag").innerHTML = data.score_tag;
+    // })
+    // .catch((error) => {
+    //   document.getElementById("error").innerHTML =
+    //     "Something went wrong Please try again";
+    // });
   } else {
     document.getElementById("errors").innerHTML =
       "URL is wrong try again with valid one !!! ";
