@@ -11,3 +11,4 @@ const validURL = (str)=>{
 }
 
 module.exports = validURL;
+// export { validURL }

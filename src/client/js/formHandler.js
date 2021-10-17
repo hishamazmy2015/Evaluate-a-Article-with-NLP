@@ -1,3 +1,4 @@
+
 const handleSubmit = async (event) => {
   event.preventDefault();
 
@@ -19,11 +20,19 @@ const handleSubmit = async (event) => {
     // .then((res) => {
     // data = res.json();
 
-    document.getElementById("agreement").innerHTML = data.agreement;
-    document.getElementById("sc").innerHTML = data.subjectivity;
-    document.getElementById("scon").innerHTML = data.confidence;
-    document.getElementById("irony").innerHTML = data.irony;
-    document.getElementById("score_tag").innerHTML = data.score_tag;
+    data.agreement
+      ? (document.getElementById("agreement").innerHTML = data.agreement)
+      : "";
+    data.subjectivity
+      ? (document.getElementById("sc").innerHTML = data.subjectivity)
+      : "";
+    data.confidence
+      ? (document.getElementById("scon").innerHTML = data.confidence)
+      : "";
+    data.irony ? (document.getElementById("irony").innerHTML = data.irony) : "";
+    data.score_tag
+      ? (document.getElementById("score_tag").innerHTML = data.score_tag)
+      : "";
     // })
     // .catch((error) => {
     //   document.getElementById("error").innerHTML =

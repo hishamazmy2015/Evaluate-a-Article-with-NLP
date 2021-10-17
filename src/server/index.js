@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
-var FormData = require("form-data");
+// var FormData = require("form-data");
 const fetch = require("node-fetch");
 
 dotenv.config();
@@ -26,7 +26,9 @@ app.post("/analysis", async (req, res) => {
     redirect: "follow",
   };
   try {
-    const API_KEY = process.env.API_KEY;
+    // const API_KEY = process.env.API_KEY;
+    const API_KEY = "fedeb69d0db26909a38280ea0afb468e";
+
     const response = await fetch(
       `https://api.meaningcloud.com/sentiment-2.1?key=${API_KEY}&lang=auto&url=${req.body.text}`,
       requestOptions
